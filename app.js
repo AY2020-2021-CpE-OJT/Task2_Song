@@ -1,8 +1,18 @@
 const express = require('express'); //call express
 const app = express();
+const mongoose = require('mongoose'); //call mongoose
 
 const bodyParser = require('body-parser'); // need to POST data
 const mongoose = require('mongoose'); //need to connect MongoDB
+
+const db = mongoose.connection; // figure out the connection of MongoDB
+db.on('error', console.error);
+db.once('open', function(){
+    //connected to MongoDB server
+    console.log("Connected to MongoDB server");
+});
+
+mongoose.connect('mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'); //connect to MongoDB server
 
 //configure app to use bodyparser
 app.use(bodyParser.urlencoded({extended: true}));
