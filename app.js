@@ -3,7 +3,6 @@ const app = express();
 const mongoose = require('mongoose'); //call mongoose
 
 const bodyParser = require('body-parser'); // need to POST data
-const mongoose = require('mongoose'); //need to connect MongoDB
 
 const db = mongoose.connection; // figure out the connection of MongoDB
 db.on('error', console.error);
