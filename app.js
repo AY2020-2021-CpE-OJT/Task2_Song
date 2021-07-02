@@ -26,6 +26,30 @@ const port = process.env.PORT || 3000; //to secure
 //configure router
 const router = require('./routes')(app)
 
+// Create familys member
+app.post('/api/family', (req,res)=>{
+    const family = new Family();
+    
+    // request data
+    family.name = req.body.name;
+    family.age = req.body.age;
+    family.position = req.body.posiotion;
+
+    family.save((err)=>{
+        if (err){
+            console.error(err);
+            res.json({message : "Fail to add member"});
+            return;
+        } else { res.json(family); }
+    });
+
+    res.json(family);
+
+});
+
+
+
+
 //Run server
 const server = app.listen(port, function(){
     console.log("Server is running...")
