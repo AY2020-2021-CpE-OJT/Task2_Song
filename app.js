@@ -14,7 +14,7 @@ db.once('open', function(){
 mongoose.connect('mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'); //connect to MongoDB server
 
 //define model
-const Family = require('./models/family');
+const family = require('./models/family');
 
 //configure app to use bodyparser
 app.use(bodyParser.urlencoded({extended: true}));
@@ -33,7 +33,7 @@ app.post('/api/family', (req,res)=>{
     // request data
     family.name = req.body.name;
     family.age = req.body.age;
-    family.position = req.body.posiotion;
+    family.position = req.body.position;
 
     family.save((err)=>{
         if (err){
@@ -44,7 +44,14 @@ app.post('/api/family', (req,res)=>{
     });
 
     res.json(family);
+});
 
+//Get familys member
+app.get('/api/family', (req,res) => {
+    family.find((err, family)=>{
+        if (err) return res.status(500).send({error : 'database failed'});
+        res.json(family);
+    })
 });
 
 

@@ -34,6 +34,6 @@ module.exports = function(app)
 
     //delete member
     app.delete('api/family/:name',(req,res)=>{
-        res.send();
+        res.end();
     })
 }
