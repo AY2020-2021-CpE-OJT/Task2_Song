@@ -13,6 +13,9 @@ db.once('open', function(){
 
 mongoose.connect('mongodb+srv://daehyeon:skagnlfud0922@ojt.broz0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'); //connect to MongoDB server
 
+//define model
+const Family = require('./models/family');
+
 //configure app to use bodyparser
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
