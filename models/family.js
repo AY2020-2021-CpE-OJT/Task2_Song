@@ -8,4 +8,4 @@ const familySchema = new Schema({
     position : String
 });
 
-module.exports('family',familySchema);
+module.exports = mongoose.model('family',familySchema);
